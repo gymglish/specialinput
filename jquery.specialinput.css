@@ -1,0 +1,133 @@
+/* Toggler */
+.specialinput-toggler {
+    background-color: #E1E1E1; background-repeat: repeat-x; background-image: -khtml-gradient(linear, left top, left bottom, from( #F1F1F1), to( #E1E1E1));
+    background-image: -moz-linear-gradient(top, #F1F1F1, #E1E1E1); background-image: -ms-linear-gradient(top, #F1F1F1, #E1E1E1);
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #F1F1F1), color-stop(100%, #E1E1E1));
+    background-image: -webkit-linear-gradient(top, #F1F1F1, #E1E1E1);
+    background-image: -o-linear-gradient(top, #F1F1F1, #E1E1E1);
+    background-image: linear-gradient(top, #F1F1F1, #E1E1E1);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f1f1f1', endColorstr='#e1e1e1', GradientType=0);
+    cursor: pointer;
+    border: 1px solid #B7B7B7;
+    width: 31px;
+    height: 22px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    display: inline-block;
+    padding: 0 5px 0 5px;
+    margin-top: -1px;
+    color: #404040;
+    line-height: 22px;
+    font-size: 13px;
+    font-weight: bold;
+    text-shadow: 0 1px 0 white;
+    -webkit-box-shadow: 0 1px 0px #B7B7B7,inset 0 1px 0 white;
+    -moz-box-shadow: 0 1px 0px #b7b7b7,inset 0 1px 0 #ffffff;
+    box-shadow: 0 1px 0px #B7B7B7,inset 0 1px 0 white;
+}
+
+.specialinput-toggler-icon {
+    margin: 0 5px -3px 0;
+    display: inline-block;
+    height: 15px;
+    width: 8px;
+}
+
+.hide-keyboard {
+    background: url("arrows-sprite.png") -18px 0 no-repeat;
+}
+.show-keyboard {
+    background: url("arrows-sprite.png") 0px 0 no-repeat;
+}
+
+/* Keyboard */
+.specialinput-row {
+    margin: 0 0 4px 0;
+}
+
+.specialinput-button {
+    background-color: #E1E1E1;
+    background-repeat: repeat-x;
+    background-image: -khtml-gradient(linear, left top, left bottom, from( #F1F1F1), to( #E1E1E1));
+    background-image: -moz-linear-gradient(top, #F1F1F1, #E1E1E1);
+    background-image: -ms-linear-gradient(top, #F1F1F1, #E1E1E1);
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #F1F1F1), color-stop(100%, #E1E1E1));
+    background-image: -webkit-linear-gradient(top, #F1F1F1, #E1E1E1);
+    background-image: -o-linear-gradient(top, #F1F1F1, #E1E1E1);
+    background-image: linear-gradient(top, #F1F1F1, #E1E1E1);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f1f1f1', endColorstr='#e1e1e1', GradientType=0);
+    cursor: pointer;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    -webkit-box-shadow: 0 1px 0px #B7B7B7,inset 0 1px 0 white;
+    -moz-box-shadow: 0 1px 0px #b7b7b7,inset 0 1px 0 #ffffff;
+    box-shadow: 0 1px 0px #B7B7B7,inset 0 1px 0 white;
+    border: 1px solid #B7B7B7;
+    width: 22px;
+    height: 22px;
+    line-height: 22px;
+    float: left;
+    text-align: center;
+    margin: 0 3px 0 0;
+    color: #404040;
+    font-weight: bold;
+}
+
+.specialinput-button:hover, .specialinput- {
+    background: #F0F0F0;
+}
+
+.specialinput-shift {
+    position: relative;
+    padding: 0 0 0 20px;
+    width: 40px;
+}
+
+.specialinput-shift:after {
+    background: url("arrows-sprite.png") -32px 0 no-repeat;
+    width: 11px;
+    height: 11px;
+    position: absolute;
+    left: 4px;
+    display: inline-block;
+    content: "";
+    text-indent: -99999px;
+    top: 4px;
+}
+
+/* Keyboard container */
+.specialinput-keyboard {
+    position: absolute;
+    background: #ffffff;
+    border: 1px solid #c2e1f5;
+    border-radius: 6px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+    padding: 5px;
+    margin-top: 10px;
+    left: 100px;
+}
+.specialinput-keyboard:after, .specialinput-keyboard:before {
+    bottom: 100%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+}
+
+.specialinput-keyboard:after {
+    border-bottom-color: #ffffff;
+    border-width: 8px;
+    left: 15%;
+    margin-left: -8px;
+}
+.specialinput-keyboard:before {
+    border-bottom-color: #c2e1f5;
+    border-width: 9px;
+    left: 15%;
+    margin-left: -9px;
+}
+
