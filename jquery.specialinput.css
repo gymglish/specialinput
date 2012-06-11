@@ -34,10 +34,10 @@
     width: 8px;
 }
 
-.hide-keyboard {
+.specialinput-toggler-hide {
     background: url("arrows-sprite.png") -18px 0 no-repeat;
 }
-.show-keyboard {
+.specialinput-toggler-show {
     background: url("arrows-sprite.png") 0px 0 no-repeat;
 }
 
@@ -86,7 +86,6 @@
 }
 
 .specialinput-shift:after {
-    background: url("arrows-sprite.png") -32px 0 no-repeat;
     width: 11px;
     height: 11px;
     position: absolute;
@@ -95,6 +94,14 @@
     content: "";
     text-indent: -99999px;
     top: 4px;
+}
+
+.specialinput-shift-upper:after {
+    background: url("arrows-sprite.png") -48px 0 no-repeat;
+}
+
+.specialinput-shift-lower:after {
+    background: url("arrows-sprite.png") -32px 0 no-repeat;
 }
 
 /* Keyboard container */
