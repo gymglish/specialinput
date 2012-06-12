@@ -1,6 +1,7 @@
 //Special input jquery plugin. Decorate an input type=text with a keyboard for
 //special chars
 (function($) {
+    "use strict";
     $.fn.specialinput = function(options) {
         //setting up default values.
         $.fn.specialinput.defaults = {
@@ -25,7 +26,7 @@
                 toggler: '<div class="specialinput-toggler"><span class="specialinput-toggler-icon specialinput-toggler-show"></span><span>Àé</span></div>',
                 keyboard: '<div class="specialinput-keyboard"><div class="specialinput-row"><div class="specialinput-shift specialinput-button">Shift</div> <div class="specialinput-button"></div>'
             }
-        }
+        };
         var opts = $.extend({}, $.fn.specialinput.defaults, options),
             keyboard_clicked = false;
 
@@ -90,7 +91,6 @@
                     button.click(toggleCase);
                 } else {
                     populateKeyboard(button, row);
-        
                 }
             });
             toggler.after(keyboard);
@@ -115,7 +115,7 @@
                 opts.keyboard_case = 'upper';
             }
             //get one button and remove the rest
-            buttons = $(this).siblings();
+            var buttons = $(this).siblings();
             var button = $(buttons[0]),
                 container = $(this).parent();
             for (var i=1; i<buttons.length; i++){
@@ -134,5 +134,5 @@
             }
             button.remove();
         }
-    }
+    };
 })(jQuery);

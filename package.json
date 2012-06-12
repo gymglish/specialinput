@@ -1,0 +1,28 @@
+{
+    "name": "jquery.specialinput",
+    "title": "jquery.specialinput",
+    "version": "0.0.1",
+    "author": "GymGlish",
+    "contributors": [
+        "Alexandru Plugaru <alexandru.plugaru@gmail.com>"
+    ],
+    "homepage": "http://www.gymglish.com/",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/gymglish/specialinput.git"
+    },
+    "license": {
+        "name": "MIT",
+        "url": "http://www.opensource.org/licenses/mit-license.php"
+    },
+    "keywords": [
+        "input",
+        "jquery"
+    ],
+    "devDependencies": {
+        "qunit"  : "0.2.x"
+    },
+    "scripts":    {
+        "test": "node ./test/index.js"
+    }
+}
