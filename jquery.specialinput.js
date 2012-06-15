@@ -34,7 +34,7 @@
 
         var toggler = $(opts.templates.toggler);
         if (opts.toggle_persistent && readCookie("specialinput-toggler-hidden") == "1") {
-            toggler.removeClass("specialinput-toggler-show").addClass("specialinput-toggler-hidden");
+            toggler.find(".specialinput-toggler-icon").removeClass("specialinput-toggler-show").addClass("specialinput-toggler-hidden");
         }
         if (opts.global_toggler !== ""){
             var toggler_container = $(opts.global_toggler);
