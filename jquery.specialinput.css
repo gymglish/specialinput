@@ -35,7 +35,7 @@
 }
 
 .specialinput-toggler-hide {
-    background: url("arrows-sprite.png") -18px 0 no-repeat;
+    background: url("arrows-sprite.png") -17px 0 no-repeat;
 }
 .specialinput-toggler-show {
     background: url("arrows-sprite.png") 0px 0 no-repeat;
