@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+        <script src="../jquery.specialinput.js"></script>
+
+        <link href="../jquery.specialinput.css" type="text/css" rel="stylesheet" />
+        <script>
+            $(document).ready(function(){
+                $("input[type=text]").specialinput({
+                    "global_toggler": "#specialinput-toggler-container",
+                    "toggle_persistent": true
+                });
+            });
+        </script>
+        <style type="text/css">
+            #specialinput-container {
+                width: 400px;
+            }
+            #specialinput-toggler-container {
+                float: right;
+            }
+        </style>
+    </head>
+    <body>
+        <h2>Global toggler demo</h2>
+        <p>You can click or focus on any input. If you click on 
+        the display hide keyboard it will hide the keyboard for all inputs.</p>
+        <div id="specialinput-container">
+            <div id="specialinput-toggler-container"></div>
+            <p>
+                <label for="text-input">Enter some text here:</label>
+                <input id="text-input1" type="text" />
+            </p>
+            <p>
+
+                <label for="text-input2">Text input 2:</label>
+                <input id="text-input2" type="text" />
+            </p>
+            <p>
+                <label for="text-input3">Text input 3:</label>
+                <input id="text-input3" type="text" />
+            </p>
+        </div>
+    </body>
+</html>

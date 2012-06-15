@@ -11,8 +11,8 @@ Screenshot
 
 Demo
 -----
-   https://gymglish.github.com/docs/
+   http://gymglish.github.com/specialinput/docs/
 
 Documentation
 ---------------
-   https://gymglish.github.com/docs/
+   http://gymglish.github.com/specialinput/docs/
