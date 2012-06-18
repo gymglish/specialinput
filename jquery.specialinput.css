@@ -35,10 +35,10 @@
 }
 
 .specialinput-toggler-hide {
-    background: url("arrows-sprite.png") -17px 0 no-repeat;
+    background: url("specialinput-arrows-sprite.png") -17px 0 no-repeat;
 }
 .specialinput-toggler-show {
-    background: url("arrows-sprite.png") 0px 0 no-repeat;
+    background: url("specialinput-arrows-sprite.png") 0px 0 no-repeat;
 }
 
 /* Keyboard */
@@ -97,11 +97,11 @@
 }
 
 .specialinput-shift-upper:after {
-    background: url("arrows-sprite.png") -48px 0 no-repeat;
+    background: url("specialinput-arrows-sprite.png") -48px 0 no-repeat;
 }
 
 .specialinput-shift-lower:after {
-    background: url("arrows-sprite.png") -32px 0 no-repeat;
+    background: url("specialinput-arrows-sprite.png") -32px 0 no-repeat;
 }
 
 /* Keyboard container */
