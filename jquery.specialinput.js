@@ -117,13 +117,14 @@
         }
 
         function onBlur(){
-            $(this).delay(500).queue(function(){
+            var self = $(this);
+            setTimeout(function(){
                 if (!keyboard_clicked){
-                    var keyboards = $(this).siblings('.specialinput-keyboard');
+                    var keyboards = self.siblings('.specialinput-keyboard');
                     keyboards.remove();
                 }
                 keyboard_clicked = false;
-            });
+            }, 300);
         }
 
         function showKeyboard(after_elem, input_id){
