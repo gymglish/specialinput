@@ -80,7 +80,9 @@
                     showKeyboard(toggler, input_id);
                 }
             } else {
-
+                if (hidden) {
+                    $(".specialinput-keyboard").remove();
+                }
             }
             
             // if it's persistent we should remember the choice for future pages.
