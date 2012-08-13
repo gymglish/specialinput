@@ -131,6 +131,8 @@
             //Add keyboard after toggler.
             var keyboard = $(opts.templates.keyboard);
             keyboard.attr("id", "specialinput-keyboard-" + input_id);
+            // Fix the distance of the keyboard
+            keyboard.css("left", $("#" + input_id).offset().left);
 
             var row = keyboard.find('.specialinput-row');
             keyboard.click(function(){
