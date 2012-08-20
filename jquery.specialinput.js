@@ -26,8 +26,9 @@
                 toggler: '<div class="specialinput-toggler"><span class="specialinput-toggler-icon specialinput-toggler-show"></span><span>Àé</span></div>',
                 keyboard: '<div class="specialinput-keyboard"><div class="specialinput-row"><div class="specialinput-shift specialinput-button">Shift</div> <div class="specialinput-button"></div>'
             },
-            global_toggler: "" //Selector for the container of the global toggler. If this is not 
-                               //set it will display an toggler next to each input.
+            global_toggler: "", //Selector for the container of the global toggler. If this is not 
+                                //set it will display an toggler next to each input.
+            keyboard_fix_position: false // If not in a position: relative element, set this to true.
         };
         var opts = $.extend({}, $.fn.specialinput.defaults, options),
             keyboard_clicked = false;
@@ -132,7 +133,11 @@
             var keyboard = $(opts.templates.keyboard);
             keyboard.attr("id", "specialinput-keyboard-" + input_id);
             // Fix the distance of the keyboard
-            keyboard.css("left", $("#" + input_id).offset().left);
+            if (opts.keyboard_fix_position) {
+                keyboard.css("left", $("#" + input_id).offset().left);
+            } else {
+                keyboard.css("left", $("#" + input_id).position().left);
+            }
 
             var row = keyboard.find('.specialinput-row');
             keyboard.click(function(){
