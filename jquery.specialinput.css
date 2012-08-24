@@ -9,8 +9,8 @@
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f1f1f1', endColorstr='#e1e1e1', GradientType=0);
     cursor: pointer;
     border: 1px solid #B7B7B7;
-    width: 31px;
-    height: 22px;
+    width: 38px;
+    height: 20px;
     -webkit-border-radius: 2px;
     -moz-border-radius: 2px;
     border-radius: 2px;
@@ -28,14 +28,14 @@
 }
 
 .specialinput-toggler-icon {
-    margin: 0 5px 0 0;
     display: inline-block;
-    height: 12px;
+    margin-right: 3px;
+    height: 10px;
     width: 8px;
 }
 
 .specialinput-toggler-hide {
-    background: url("/images/specialinput-arrows-sprite.png") -17px 0 no-repeat;
+    background: url("/images/specialinput-arrows-sprite.png") -10px 0 no-repeat;
 }
 .specialinput-toggler-show {
     background: url("/images/specialinput-arrows-sprite.png") 0px 0 no-repeat;
@@ -67,7 +67,7 @@
     border: 1px solid #B7B7B7;
     width: 22px;
     height: 22px;
-    line-height: 22px;
+    line-height: 24px;
     float: left;
     text-align: center;
     margin: 0 3px 0 0;
@@ -81,7 +81,7 @@
 
 .specialinput-shift {
     position: relative;
-    padding: 0 0 0 20px;
+    padding: 0 0 0 16px;
     width: 40px;
 }
 
@@ -97,11 +97,11 @@
 }
 
 .specialinput-shift-upper:after {
-    background: url("/images/specialinput-arrows-sprite.png") -48px 0 no-repeat;
+    background: url("/images/specialinput-arrows-sprite.png") -20px 0 no-repeat;
 }
 
 .specialinput-shift-lower:after {
-    background: url("/images/specialinput-arrows-sprite.png") -32px 0 no-repeat;
+    background: url("/images/specialinput-arrows-sprite.png") -36px 0 no-repeat;
 }
 
 /* Keyboard container */

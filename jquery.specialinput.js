@@ -23,7 +23,7 @@
                                      // with the toggled value
             keyboard_case: 'lower', //lower case by default
             templates: { //template for the toggler and the keyboard. Don't change the classes.
-                toggler: '<div class="specialinput-toggler"><span class="specialinput-toggler-icon specialinput-toggler-show"></span><span>Àé</span></div>',
+                toggler: '<div class="specialinput-toggler"><span class="specialinput-toggler-icon specialinput-toggler-show"></span><span>à ê ç</span></div>',
                 keyboard: '<div class="specialinput-keyboard"><div class="specialinput-row"><div class="specialinput-shift specialinput-button">Shift</div> <div class="specialinput-button"></div>'
             },
             global_toggler: "", //Selector for the container of the global toggler. If this is not 
@@ -146,7 +146,12 @@
             row.find(".specialinput-button").each(function(){
                 var button = $(this);
                 if (button.hasClass('specialinput-shift')){
-                    button.addClass('specialinput-shift-' + opts.keyboard_case);
+                    if (opts.keyboard_case == 'lower') {
+                        // display the uppercase button
+                        button.addClass('specialinput-shift-upper');
+                    } else {
+                        button.addClass('specialinput-shift-lower');
+                    }
                     button.click(toggleCase);
                 } else {
                     populateKeyboard(button, row);
@@ -166,12 +171,13 @@
 
         // Lower or uper case keyboard.
         function toggleCase(){
+            // Clicked on the upper case
             if ($(this).hasClass("specialinput-shift-upper")) {
                 $(this).removeClass("specialinput-shift-upper").addClass("specialinput-shift-lower");
-                opts.keyboard_case = 'lower';
+                opts.keyboard_case = 'upper';
             } else {
                 $(this).removeClass("specialinput-shift-lower").addClass("specialinput-shift-upper");
-                opts.keyboard_case = 'upper';
+                opts.keyboard_case = 'lower';
             }
             //get one button and remove the rest
             var buttons = $(this).siblings();
