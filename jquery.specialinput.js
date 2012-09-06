@@ -88,7 +88,7 @@
             
             // if it's persistent we should remember the choice for future pages.
             if (opts.toggle_persistent){
-                createCookie("specialinput-toggler-hidden", hidden)
+                createCookie("specialinput-toggler-hidden", hidden, 360)
             }
         }
 
