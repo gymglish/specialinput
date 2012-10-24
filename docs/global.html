@@ -9,7 +9,7 @@
         <script>
             $(document).ready(function(){
                 $("input[type=text]").specialinput({
-                    "global_toggler": "#specialinput-toggler-container",
+                    "global_toggler": ".specialinput-toggler-container",
                     "toggle_persistent": true
                 });
             });
@@ -28,7 +28,7 @@
         <p>You can click or focus on any input. If you click on 
         the display hide keyboard it will hide the keyboard for all inputs.</p>
         <div id="specialinput-container">
-            <div id="specialinput-toggler-container"></div>
+            <div class="specialinput-toggler-container"></div>
             <p>
                 <label for="text-input">Enter some text here:</label>
                 <input id="text-input1" type="text" />
@@ -43,5 +43,21 @@
                 <input id="text-input3" type="text" />
             </p>
         </div>
+        <div id="specialinput-container-1">
+            <div class="specialinput-toggler-container"></div>
+            <p>
+                <label for="text-input11">Enter some text here:</label>
+                <input id="text-input11" type="text" />
+            </p>
+            <p>
+
+                <label for="text-input21">Text input 2:</label>
+                <input id="text-input21" type="text" />
+            </p>
+            <p>
+                <label for="text-input31">Text input 3:</label>
+                <input id="text-input31" type="text" />
+            </p>
+        </div> 
     </body>
 </html>

@@ -64,10 +64,14 @@
             var hidden = 0;
             if (icon.hasClass("specialinput-toggler-show")){
                 hidden = 1;
-                icon.removeClass("specialinput-toggler-show").addClass("specialinput-toggler-hide");
+                $(".specialinput-toggler-icon")
+                    .removeClass("specialinput-toggler-show")
+                    .addClass("specialinput-toggler-hide");
             } else {
                 hidden = 0;
-                icon.removeClass("specialinput-toggler-hide").addClass("specialinput-toggler-show");
+                $(".specialinput-toggler-icon")
+                    .removeClass("specialinput-toggler-hide")
+                    .addClass("specialinput-toggler-show");
             }
 
             if (opts.global_toggler === ""){
@@ -121,8 +125,7 @@
             var self = $(this);
             setTimeout(function(){
                 if (!keyboard_clicked){
-                    var keyboards = self.siblings('.specialinput-keyboard');
-                    keyboards.remove();
+                    $("#specialinput-keyboard-" + self.attr('id')).remove();
                 }
                 keyboard_clicked = false;
             }, 300);
@@ -131,6 +134,10 @@
         function showKeyboard(after_elem, input_id){
             //Add keyboard after toggler.
             var keyboard = $(opts.templates.keyboard);
+            if ($('#specialinput-keyboard-' + input_id).length > 0){
+                // we already have a keyboard, no need to add another one
+                return;
+            }
             keyboard.attr("id", "specialinput-keyboard-" + input_id);
             // Fix the distance of the keyboard
             if (opts.keyboard_fix_position) {
