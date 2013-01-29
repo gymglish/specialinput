@@ -205,6 +205,9 @@
                 new_button.click(buttonClicked);
                 container.append(new_button);
             }
+            container.append($("<div class='specialinput-close'>").click(function(){
+                $(this).parents(".specialinput-keyboard").remove();
+            }));
             button.remove();
         }
 
