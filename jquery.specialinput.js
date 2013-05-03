@@ -140,10 +140,13 @@
             }
             keyboard.attr("id", "specialinput-keyboard-" + input_id);
             // Fix the distance of the keyboard
+            var $input = $("#" + input_id);
+            var offsetX = $input.data('specialinput-offsetX') || 0;
+
             if (opts.keyboard_fix_position) {
-                keyboard.css("left", $("#" + input_id).offset().left);
+                keyboard.css("left", $input.offset().left + offsetX);
             } else {
-                keyboard.css("left", $("#" + input_id).position().left);
+                keyboard.css("left", $input.position().left + offsetX);
             }
 
             var row = keyboard.find('.specialinput-row');
@@ -171,9 +174,19 @@
             var self = $(this),
                 new_value = self.html(),
                 input_id = self.parents(".specialinput-keyboard").attr("id").split("specialinput-keyboard-")[1],
-                input = $("#" + input_id);
-            input.val(input.val() + new_value);
-            input.focus();
+                input = $("#" + input_id),
+                e = $.Event('beforechange.specialinput');
+            input.trigger(e);
+            if(!e.isDefaultPrevented()){
+                var maxlength = input.attr('maxlength');
+                if (!maxlength ||  input.val().length < maxlength){
+                    var e = $.Event('change.specialinput', {specialinput: self});
+                    input.val(input.val() + new_value).trigger(e);
+                    if(!e.isDefaultPrevented()){
+                        input.focus()
+                    }
+                }
+            }
         }
 
         // Lower or uper case keyboard.
