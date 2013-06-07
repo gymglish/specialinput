@@ -102,16 +102,17 @@
             if (opts.toggle_persistent && readCookie('specialinput-toggler-hidden') == '1') {
                 return;
             }
+            var input_id;
             if (opts.global_toggler === '') {
                 var toggler = $(this).siblings('.specialinput-toggler');
-                var input_id = toggler.attr('id').split('specialinput-toggler-')[1];
+                input_id = toggler.attr('id').split('specialinput-toggler-')[1];
                 showKeyboard(toggler, input_id);
             } else { // this is using a global toggler
                 // remove all other present keyboards and keep the one which
                 // is attached to this input
 
-                var input = $(this),
-                    input_id = input.attr('id');
+                var input = $(this);
+                input_id = input.attr('id');
                 $('.specialinput-keyboard').each(function() {
                     if ($(this).attr('id') != 'specialinput-keyboard-' + input_id) {
                         $(this).remove();
@@ -180,7 +181,7 @@
             if (!e.isDefaultPrevented()) {
                 var maxlength = input.attr('maxlength');
                 if (!maxlength || input.val().length < maxlength) {
-                    var e = $.Event('change.specialinput', {specialinput: self});
+                    e = $.Event('change.specialinput', {specialinput: self});
                     input.val(input.val() + new_value).trigger(e);
                     if (!e.isDefaultPrevented()) {
                         input.focus();
@@ -226,12 +227,13 @@
 
         // Cookie manipulation.
         function createCookie(name, value, days) {
+            var expires;
             if (days) {
                 var date = new Date();
                 date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-                var expires = '; expires='+ date.toGMTString();
+                expires = '; expires='+ date.toGMTString();
             }
-            else var expires = '';
+            else expires = '';
             document.cookie = name + '='+ value + expires + '; path=/';
         }
 
@@ -241,7 +243,7 @@
             for (var i = 0; i < ca.length; i++) {
                 var c = ca[i];
                 while (c.charAt(0) == ' ') c = c.substring(1, c.length);
-                if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+                if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
             }
             return null;
         }
