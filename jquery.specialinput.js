@@ -1,32 +1,32 @@
 //Special input jquery plugin. Decorate an input type=text with a keyboard for
 //special chars
 (function($) {
-    "use strict";
+    'use strict';
     $.fn.specialinput = function(options) {
         //setting up default values.
         $.fn.specialinput.defaults = {
             language_chars: {
-                "fr-fr": {
-                    "lower": [
-                        'à', 'â','ç', 'è', 'é', 'ê', 'ë', 'î', 
+                'fr-fr': {
+                    'lower': [
+                        'à', 'â', 'ç', 'è', 'é', 'ê', 'ë', 'î',
                         'ï', 'ô', 'ù', 'û', 'ü', 'æ', 'œ'
                     ],
-                    "upper": [
-                        'À','Â','Ç','È','É','Ê','Ë','Î',
-                        'Ï','Ô','Ù','Û','Ü','Æ','Œ'
+                    'upper': [
+                        'À', 'Â', 'Ç', 'È', 'É', 'Ê', 'Ë', 'Î',
+                        'Ï', 'Ô', 'Ù', 'Û', 'Ü', 'Æ', 'Œ'
                     ]
                 }
             },
-            lang: "fr-fr", //default language
+            lang: 'fr-fr', //default language
             toggled: false, //keyboard not toggled by default
-            toggle_persistent: false, // if this is set to true, set a cookie 
+            toggle_persistent: false, // if this is set to true, set a cookie
                                      // with the toggled value
             keyboard_case: 'lower', //lower case by default
             templates: { //template for the toggler and the keyboard. Don't change the classes.
                 toggler: '<div class="specialinput-toggler"><span class="specialinput-toggler-icon specialinput-toggler-show"></span><span>à ê ç</span></div>',
                 keyboard: '<div class="specialinput-keyboard"><div class="specialinput-row"><div class="specialinput-shift specialinput-button">Shift</div> <div class="specialinput-button"></div>'
             },
-            global_toggler: "", //Selector for the container of the global toggler. If this is not 
+            global_toggler: '', //Selector for the container of the global toggler. If this is not
                                 //set it will display an toggler next to each input.
             keyboard_fix_position: false // If not in a position: relative element, set this to true.
         };
@@ -34,10 +34,10 @@
             keyboard_clicked = false;
 
         var toggler = $(opts.templates.toggler);
-        if (opts.toggle_persistent && readCookie("specialinput-toggler-hidden") == "1") {
-            toggler.find(".specialinput-toggler-icon").removeClass("specialinput-toggler-show").addClass("specialinput-toggler-hide");
+        if (opts.toggle_persistent && readCookie('specialinput-toggler-hidden') == '1') {
+            toggler.find('.specialinput-toggler-icon').removeClass('specialinput-toggler-show').addClass('specialinput-toggler-hide');
         }
-        if (opts.global_toggler !== ""){
+        if (opts.global_toggler !== '') {
             var toggler_container = $(opts.global_toggler);
             toggler.attr('rel', this.selector);
             toggler.click(toggleKeyboard);
@@ -46,9 +46,9 @@
 
         return this.each(function() {
             //Add toggler template after each input box.
-            if (opts.global_toggler === ""){
+            if (opts.global_toggler === '') {
                 var toggler = $(opts.templates.toggler);
-                toggler.attr("id", "specialinput-toggler-" + $(this).attr('id'));
+                toggler.attr('id', 'specialinput-toggler-' + $(this).attr('id'));
                 toggler.click(toggleKeyboard);
                 $(this).after(toggler);
             }
@@ -58,53 +58,53 @@
         });
 
         //enable disable specialinput keyboard
-        function toggleKeyboard(){
+        function toggleKeyboard() {
             // Show up/down icon
-            var icon = $(this).find(".specialinput-toggler-icon");
+            var icon = $(this).find('.specialinput-toggler-icon');
             var hidden = 0;
-            if (icon.hasClass("specialinput-toggler-show")){
+            if (icon.hasClass('specialinput-toggler-show')) {
                 hidden = 1;
-                $(".specialinput-toggler-icon")
-                    .removeClass("specialinput-toggler-show")
-                    .addClass("specialinput-toggler-hide");
+                $('.specialinput-toggler-icon')
+                    .removeClass('specialinput-toggler-show')
+                    .addClass('specialinput-toggler-hide');
             } else {
                 hidden = 0;
-                $(".specialinput-toggler-icon")
-                    .removeClass("specialinput-toggler-hide")
-                    .addClass("specialinput-toggler-show");
+                $('.specialinput-toggler-icon')
+                    .removeClass('specialinput-toggler-hide')
+                    .addClass('specialinput-toggler-show');
             }
 
-            if (opts.global_toggler === ""){
+            if (opts.global_toggler === '') {
                 //Show/remove keyboards
                 var keyboards = $(this).siblings('.specialinput-keyboard');
                 if (keyboards.length > 0) {
                     keyboards.remove();
                 } else {
                     var toggler = $(this);
-                    var input_id = toggler.attr("id").split("specialinput-toggler-")[1];
+                    var input_id = toggler.attr('id').split('specialinput-toggler-')[1];
                     showKeyboard(toggler, input_id);
                 }
             } else {
                 if (hidden) {
-                    $(".specialinput-keyboard").remove();
+                    $('.specialinput-keyboard').remove();
                 }
             }
-            
+
             // if it's persistent we should remember the choice for future pages.
-            if (opts.toggle_persistent){
-                createCookie("specialinput-toggler-hidden", hidden, 360)
+            if (opts.toggle_persistent) {
+                createCookie('specialinput-toggler-hidden', hidden, 360);
             }
         }
 
         //when the input is focused display the keyboard if it's toggled
-        function onFocus(){
+        function onFocus() {
             // if keyboard is disabled don't show the keyboard.
-            if (opts.toggle_persistent && readCookie("specialinput-toggler-hidden") == "1") {
+            if (opts.toggle_persistent && readCookie('specialinput-toggler-hidden') == '1') {
                 return;
             }
-            if (opts.global_toggler === ""){
-                var toggler = $(this).siblings(".specialinput-toggler");
-                var input_id = toggler.attr("id").split("specialinput-toggler-")[1];
+            if (opts.global_toggler === '') {
+                var toggler = $(this).siblings('.specialinput-toggler');
+                var input_id = toggler.attr('id').split('specialinput-toggler-')[1];
                 showKeyboard(toggler, input_id);
             } else { // this is using a global toggler
                 // remove all other present keyboards and keep the one which
@@ -112,8 +112,8 @@
 
                 var input = $(this),
                     input_id = input.attr('id');
-                $(".specialinput-keyboard").each(function(){
-                    if ($(this).attr("id") != "specialinput-keyboard-" + input_id ) {
+                $('.specialinput-keyboard').each(function() {
+                    if ($(this).attr('id') != 'specialinput-keyboard-' + input_id) {
                         $(this).remove();
                     }
                 });
@@ -121,41 +121,41 @@
             }
         }
 
-        function onBlur(){
+        function onBlur() {
             var self = $(this);
-            setTimeout(function(){
-                if (!keyboard_clicked){
-                    $("#specialinput-keyboard-" + self.attr('id')).remove();
+            setTimeout(function() {
+                if (!keyboard_clicked) {
+                    $('#specialinput-keyboard-' + self.attr('id')).remove();
                 }
                 keyboard_clicked = false;
             }, 300);
         }
 
-        function showKeyboard(after_elem, input_id){
+        function showKeyboard(after_elem, input_id) {
             //Add keyboard after toggler.
             var keyboard = $(opts.templates.keyboard);
-            if ($('#specialinput-keyboard-' + input_id).length > 0){
+            if ($('#specialinput-keyboard-' + input_id).length > 0) {
                 // we already have a keyboard, no need to add another one
                 return;
             }
-            keyboard.attr("id", "specialinput-keyboard-" + input_id);
+            keyboard.attr('id', 'specialinput-keyboard-' + input_id);
             // Fix the distance of the keyboard
-            var $input = $("#" + input_id);
+            var $input = $('#' + input_id);
             var offsetX = $input.data('specialinput-offsetX') || 0;
 
             if (opts.keyboard_fix_position) {
-                keyboard.css("left", $input.offset().left + offsetX);
+                keyboard.css('left', $input.offset().left + offsetX);
             } else {
-                keyboard.css("left", $input.position().left + offsetX);
+                keyboard.css('left', $input.position().left + offsetX);
             }
 
             var row = keyboard.find('.specialinput-row');
-            keyboard.click(function(){
+            keyboard.click(function() {
                 keyboard_clicked = true;
             });
-            row.find(".specialinput-button").each(function(){
+            row.find('.specialinput-button').each(function() {
                 var button = $(this);
-                if (button.hasClass('specialinput-shift')){
+                if (button.hasClass('specialinput-shift')) {
                     if (opts.keyboard_case == 'lower') {
                         // display the uppercase button
                         button.addClass('specialinput-shift-upper');
@@ -170,40 +170,40 @@
             after_elem.after(keyboard);
         }
 
-        function buttonClicked(){
+        function buttonClicked() {
             var self = $(this),
                 new_value = self.html(),
-                input_id = self.parents(".specialinput-keyboard").attr("id").split("specialinput-keyboard-")[1],
-                input = $("#" + input_id),
+                input_id = self.parents('.specialinput-keyboard').attr('id').split('specialinput-keyboard-')[1],
+                input = $('#' + input_id),
                 e = $.Event('beforechange.specialinput');
             input.trigger(e);
-            if(!e.isDefaultPrevented()){
+            if (!e.isDefaultPrevented()) {
                 var maxlength = input.attr('maxlength');
-                if (!maxlength ||  input.val().length < maxlength){
+                if (!maxlength || input.val().length < maxlength) {
                     var e = $.Event('change.specialinput', {specialinput: self});
                     input.val(input.val() + new_value).trigger(e);
-                    if(!e.isDefaultPrevented()){
-                        input.focus()
+                    if (!e.isDefaultPrevented()) {
+                        input.focus();
                     }
                 }
             }
         }
 
         // Lower or uper case keyboard.
-        function toggleCase(){
+        function toggleCase() {
             // Clicked on the upper case
-            if ($(this).hasClass("specialinput-shift-upper")) {
-                $(this).removeClass("specialinput-shift-upper").addClass("specialinput-shift-lower");
+            if ($(this).hasClass('specialinput-shift-upper')) {
+                $(this).removeClass('specialinput-shift-upper').addClass('specialinput-shift-lower');
                 opts.keyboard_case = 'upper';
             } else {
-                $(this).removeClass("specialinput-shift-lower").addClass("specialinput-shift-upper");
+                $(this).removeClass('specialinput-shift-lower').addClass('specialinput-shift-upper');
                 opts.keyboard_case = 'lower';
             }
             //get one button and remove the rest
             var buttons = $(this).siblings();
             var button = $(buttons[0]),
                 container = $(this).parent();
-            for (var i=1; i<buttons.length; i++){
+            for (var i = 1; i < buttons.length; i++) {
                 $(buttons[i]).remove();
             }
             populateKeyboard(button, container);
@@ -212,14 +212,14 @@
         // Add keyboard keys
         function populateKeyboard(button, container) {
             var chars = opts.language_chars[opts.lang][opts.keyboard_case];
-            for (var i=0; i < chars.length; i++){
+            for (var i = 0; i < chars.length; i++) {
                 var new_button = button.clone();
                 new_button.html(chars[i]);
                 new_button.click(buttonClicked);
                 container.append(new_button);
             }
-            container.append($("<div class='specialinput-close'>").click(function(){
-                $(this).parents(".specialinput-keyboard").remove();
+            container.append($("<div class='specialinput-close'>").click(function() {
+                $(this).parents('.specialinput-keyboard').remove();
             }));
             button.remove();
         }
@@ -228,26 +228,26 @@
         function createCookie(name, value, days) {
             if (days) {
                 var date = new Date();
-                date.setTime(date.getTime()+(days*24*60*60*1000));
-                var expires = "; expires="+date.toGMTString();
+                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                var expires = '; expires='+ date.toGMTString();
             }
-            else var expires = "";
-            document.cookie = name+"="+value+expires+"; path=/";
+            else var expires = '';
+            document.cookie = name + '='+ value + expires + '; path=/';
         }
 
         function readCookie(name) {
-            var nameEQ = name + "=";
+            var nameEQ = name + '=';
             var ca = document.cookie.split(';');
-            for(var i=0;i < ca.length;i++) {
+            for (var i = 0; i < ca.length; i++) {
                 var c = ca[i];
-                while (c.charAt(0)==' ') c = c.substring(1,c.length);
-                if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+                while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+                if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
             }
             return null;
         }
 
         function eraseCookie(name) {
-            createCookie(name,"",-1);
+            createCookie(name, '', -1);
         }
     };
 })(jQuery);
