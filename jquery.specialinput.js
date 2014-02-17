@@ -246,7 +246,7 @@
                         var chars = inputVal.split("");
                         chars.splice(selectionStart, 0, new_value);
                         res = chars.join("");
-                        selectionStart = res.length;
+                        selections[input_id] = res.length;
                     } else {
                         res = inputVal + new_value;
                     }
