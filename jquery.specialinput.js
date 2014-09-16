@@ -223,6 +223,7 @@
                     populateKeyboard(button, row);
                 }
             });
+            $input.data('keyboard', keyboard);
             after_elem.after(keyboard);
         }
 
