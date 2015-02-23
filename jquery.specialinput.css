@@ -35,10 +35,10 @@
 }
 
 .specialinput-toggler-hide {
-    background: url("/images/specialinput-arrows-sprite.png") -10px -3px no-repeat;
+    background: url(../images/specialinput-arrows-sprite.png) -10px -3px no-repeat;
 }
 .specialinput-toggler-show {
-    background: url("/images/specialinput-arrows-sprite.png") 0px -3px no-repeat;
+    background: url(../images/specialinput-arrows-sprite.png) 0px -3px no-repeat;
 }
 
 /* Keyboard */
@@ -99,11 +99,11 @@
 }
 
 .specialinput-shift-upper:after {
-    background: url("/images/specialinput-arrows-sprite.png") -20px -3px no-repeat;
+    background: url(../images/specialinput-arrows-sprite.png) -20px -3px no-repeat;
 }
 
 .specialinput-shift-lower:after {
-    background: url("/images/specialinput-arrows-sprite.png") -36px -3px no-repeat;
+    background: url(../images/specialinput-arrows-sprite.png) -36px -3px no-repeat;
 }
 
 /* Keyboard container */
@@ -143,7 +143,7 @@
 }
 
 .specialinput-close {
-    background: url("/images/specialinput-arrows-sprite.png") no-repeat scroll -47px 0 transparent;
+    background: url(../images/specialinput-arrows-sprite.png) no-repeat scroll -47px 0 transparent;
     cursor: pointer;
     height: 18px;
     position: absolute;
