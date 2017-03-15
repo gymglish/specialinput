@@ -135,9 +135,8 @@
                 if (keyboards.length > 0) {
                     keyboards.remove();
                 } else {
-                    var toggler = $(this);
                     var input_id = toggler.attr('id').split('specialinput-toggler-')[1];
-                    showKeyboard(toggler, input_id);
+                    showKeyboard(input_id);
                 }
             } else {
                 if (hidden) {
@@ -159,9 +158,8 @@
             }
             var input_id;
             if (opts.global_toggler === '') {
-                var toggler = $(this).siblings('.specialinput-toggler');
                 input_id = toggler.attr('id').split('specialinput-toggler-')[1];
-                showKeyboard(toggler, input_id);
+                showKeyboard(input_id);
             } else { // this is using a global toggler
                 // remove all other present keyboards and keep the one which
                 // is attached to this input
@@ -187,20 +185,26 @@
             }, 300);
         }
 
-        function showKeyboard(after_elem, input_id) {
+        function showKeyboard(input_id) {
             //Add keyboard after toggler.
             var keyboard = $(opts.templates.keyboard);
-            if ($('#specialinput-keyboard-' + input_id).length > 0) {
-                // we already have a keyboard, no need to add another one
+            var keyboard_id = 'specialinput-keyboard-' + input_id;
+
+            var existent_keyboard = $('#' + keyboard_id);
+            if (existent_keyboard.length > 0) {
                 return;
             }
-            keyboard.attr('id', 'specialinput-keyboard-' + input_id);
-            // Fix the distance of the keyboard
-            var $input = $('#' + input_id);
-            var offsetX = $input.data('specialinput-offsetX') || 0;
+            keyboard.attr('id', keyboard_id);
 
+            // Fix the distance of the keyboard
+            // since the keyboard will be a <body> child, we need to set the
+            // absolute position based on the target input.
+            var $input = $('#' + input_id);
+            var input_offset = $input.offset();
+            var offsetX = $input.data('specialinput-offsetX') || 0;
+            keyboard.css('top',input_offset.top + $input.height());
             if (opts.keyboard_fix_position) {
-                keyboard.css('left', $input.offset().left + offsetX);
+                keyboard.css('left', input_offset.left + offsetX);
             } else {
                 keyboard.css('left', $input.position().left + offsetX);
             }
@@ -223,8 +227,10 @@
                     populateKeyboard(button, row);
                 }
             });
+
+            var $input = $('#' + input_id);
             $input.data('keyboard', keyboard);
-            after_elem.after(keyboard);
+            $('body').append(keyboard);
         }
 
 
