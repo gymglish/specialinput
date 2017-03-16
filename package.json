@@ -1,10 +1,11 @@
 {
     "name": "jquery.specialinput",
     "title": "jquery.specialinput",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "author": "GymGlish",
     "contributors": [
-        "Alexandru Plugaru <alexandru.plugaru@gmail.com>"
+        "Alexandru Plugaru <alexandru.plugaru@gmail.com>",
+        "Eduardo Erlo <eduardo.erlo@gmail.com>"
     ],
     "homepage": "http://www.gymglish.com/",
     "repository": {
