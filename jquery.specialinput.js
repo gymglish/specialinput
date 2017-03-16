@@ -135,6 +135,7 @@
                 if (keyboards.length > 0) {
                     keyboards.remove();
                 } else {
+                    var toggler = $(this);
                     var input_id = toggler.attr('id').split('specialinput-toggler-')[1];
                     showKeyboard(input_id);
                 }
@@ -158,6 +159,7 @@
             }
             var input_id;
             if (opts.global_toggler === '') {
+                var toggler = $(this).siblings('.specialinput-toggler');
                 input_id = toggler.attr('id').split('specialinput-toggler-')[1];
                 showKeyboard(input_id);
             } else { // this is using a global toggler
@@ -171,7 +173,7 @@
                         $(this).remove();
                     }
                 });
-                showKeyboard(input, input_id);
+                showKeyboard(input_id);
             }
         }
 
@@ -185,6 +187,24 @@
             }, 300);
         }
 
+        function adjustKeyboardPosition(input, keyboard) {
+            // Fix the distance of the keyboard
+            // since the keyboard will be a <body> child, we need to set the
+            // absolute position based on the target input.
+            var inputOffset = input.offset();
+            var offsetX = input.data('specialinput-offsetX') || 0;
+
+            // the top must be the same as the target input + the input height
+            keyboard.css('top',inputOffset.top + input.height());
+
+            // the left must be the same as the target input
+            // since we would like to place the keyboard "arrow" just below the input, we need to
+            // subtract 15% of the keyabord's width(where the arrow is) and since we
+            // would like to place the arrow in the middle of the input, we need to
+            // sum the input width divided by 2
+            keyboard.css('left', inputOffset.left + offsetX - (keyboard.width() * 0.15) + (input.width() / 2));
+        }
+
         function showKeyboard(input_id) {
             //Add keyboard after toggler.
             var keyboard = $(opts.templates.keyboard);
@@ -196,18 +216,6 @@
             }
             keyboard.attr('id', keyboard_id);
 
-            // Fix the distance of the keyboard
-            // since the keyboard will be a <body> child, we need to set the
-            // absolute position based on the target input.
-            var $input = $('#' + input_id);
-            var input_offset = $input.offset();
-            var offsetX = $input.data('specialinput-offsetX') || 0;
-            keyboard.css('top',input_offset.top + $input.height());
-            if (opts.keyboard_fix_position) {
-                keyboard.css('left', input_offset.left + offsetX);
-            } else {
-                keyboard.css('left', $input.position().left + offsetX);
-            }
 
             var row = keyboard.find('.specialinput-row');
             keyboard.click(function() {
@@ -231,6 +239,7 @@
             var $input = $('#' + input_id);
             $input.data('keyboard', keyboard);
             $('body').append(keyboard);
+            adjustKeyboardPosition($input, keyboard);
         }
 
 
