@@ -187,22 +187,25 @@
             }, 300);
         }
 
-        function adjustKeyboardPosition(input, keyboard) {
+        function adjustKeyboardPosition(event, input) {
+            var $keyboard = $(this);
+            var $input = $(input);
             // Fix the distance of the keyboard
             // since the keyboard will be a <body> child, we need to set the
             // absolute position based on the target input.
-            var inputOffset = input.offset();
-            var offsetX = input.data('specialinput-offsetX') || 0;
+            var inputOffset = $input.offset();
+            var offsetX = $input.data('specialinput-offsetX') || 0;
+            var topMarginFromInput = 3;
 
             // the top must be the same as the target input + the input height
-            keyboard.css('top',inputOffset.top + input.height());
+            $keyboard.css('top',inputOffset.top + $input.height() + topMarginFromInput);
 
             // the left must be the same as the target input
             // since we would like to place the keyboard "arrow" just below the input, we need to
             // subtract 15% of the keyabord's width(where the arrow is) and since we
             // would like to place the arrow in the middle of the input, we need to
             // sum the input width divided by 2
-            keyboard.css('left', inputOffset.left + offsetX - (keyboard.width() * 0.15) + (input.width() / 2));
+            $keyboard.css('left', inputOffset.left + offsetX - ($keyboard.width() * 0.15) + ($input.width() / 2));
         }
 
         function showKeyboard(input_id) {
@@ -221,6 +224,7 @@
             keyboard.click(function() {
                 keyboard_clicked = true;
             });
+            keyboard.on('inputChanged', adjustKeyboardPosition);
             row.find('.specialinput-button').each(function() {
                 var button = $(this);
                 if (button.hasClass('specialinput-shift')) {
@@ -239,7 +243,7 @@
             var $input = $('#' + input_id);
             $input.data('keyboard', keyboard);
             $('body').append(keyboard);
-            adjustKeyboardPosition($input, keyboard);
+            keyboard.trigger('inputChanged', $input);
         }
 
 
