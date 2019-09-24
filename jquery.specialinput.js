@@ -6,7 +6,7 @@
         //setting up default values.
         $.fn.specialinput.defaults = {
             language_chars: {
-                'fr-fr': {
+                'fr': {
                     'lower': [
                         'à', 'â', 'ç', 'è', 'é', 'ê', 'ë', 'î',
                         'ï', 'ô', 'ù', 'û', 'ü', 'æ', 'œ'
@@ -15,9 +15,9 @@
                         'À', 'Â', 'Ç', 'È', 'É', 'Ê', 'Ë', 'Î',
                         'Ï', 'Ô', 'Ù', 'Û', 'Ü', 'Æ', 'Œ'
                     ]
-                }
+                },
             },
-            lang: 'fr-fr', //default language
+            lang: 'fr', //default language
             toggled: false, //keyboard not toggled by default
             toggle_persistent: false, // if this is set to true, set a cookie
                                      // with the toggled value
