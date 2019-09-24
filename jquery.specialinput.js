@@ -18,7 +18,7 @@
                 },
                 'de': {
                     'lower': [
-                        'ä', 'ö', 'ü'
+                        'ä', 'ö', 'ü', 'ß'
                     ],
                     'upper': [
                         'Ä', 'Ö', 'Ü', 'ß',
@@ -39,7 +39,7 @@
                                      // with the toggled value
             keyboard_case: 'lower', //lower case by default
             templates: { //template for the toggler and the keyboard. Don't change the classes.
-                toggler: '<div class="specialinput-toggler"><span class="specialinput-toggler-icon specialinput-toggler-show"></span><span>à ê ç</span></div>',
+                toggler: '<div class="specialinput-toggler"><span class="specialinput-toggler-icon specialinput-toggler-show"></span><span>{{chars}}</span></div>',
                 keyboard: '<div class="specialinput-keyboard"><div class="specialinput-row"><div class="specialinput-shift specialinput-button">Shift</div> <div class="specialinput-button"></div>'
             },
             global_toggler: '', //Selector for the container of the global toggler. If this is not
@@ -48,6 +48,9 @@
         };
         var opts = $.extend({}, $.fn.specialinput.defaults, options),
             keyboard_clicked = false;
+
+        var chars = opts.language_chars[opts.lang]['lower'];
+        opts.templates.toggler = opts.templates.toggler.replace('{{chars}}', chars.slice(0, 3).join(" "));
 
         var selections = {}; // wath the selection position for the input
         
