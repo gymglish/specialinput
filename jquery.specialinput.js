@@ -32,6 +32,14 @@
                         'Á', 'É', 'Í', 'Ó', 'Ú', 'Ü', 'Ñ',  '!', '?'
                     ]
                 },
+                'it': {
+                    'lower': [
+                        'à', 'é', 'è', 'ì', 'ó', 'ò', 'ù'
+                    ],
+                    'upper': [
+                        'À', 'É', 'È', 'Ì', 'Ó', 'Ò', 'Ù'
+                    ]
+                },
             },
             lang: 'fr', //default language
             toggled: false, //keyboard not toggled by default
