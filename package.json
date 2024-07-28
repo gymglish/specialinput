@@ -3,9 +3,16 @@
     "title": "jquery.specialinput",
     "version": "1.0.3",
     "author": "GymGlish",
+    "main": "jquery.specialinput.js",
     "contributors": [
         "Alexandru Plugaru <alexandru.plugaru@gmail.com>",
         "Eduardo Erlo <eduardo.erlo@gmail.com>"
+    ],
+    "files": [
+        "/jquery.specialinput.js",
+        "/jquery.specialinput.css",
+        "/images"
+
     ],
     "homepage": "http://www.gymglish.com/",
     "repository": {
