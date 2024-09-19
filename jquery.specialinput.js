@@ -1,59 +1,63 @@
+export const DEFAULTS = {
+    language_chars: {
+        'fr': {
+            'lower': [
+                'à', 'â', 'ç', 'è', 'é', 'ê', 'ë', 'î',
+                'ï', 'ô', 'ù', 'û', 'ü', 'æ', 'œ'
+            ],
+            'upper': [
+                'À', 'Â', 'Ç', 'È', 'É', 'Ê', 'Ë', 'Î',
+                'Ï', 'Ô', 'Ù', 'Û', 'Ü', 'Æ', 'Œ'
+            ]
+        },
+        'de': {
+            'lower': [
+                'ä', 'ö', 'ü', 'ß'
+            ],
+            'upper': [
+                'Ä', 'Ö', 'Ü', 'ß',
+            ]
+        },
+        'es': {
+            'lower': [
+                'á', 'é', 'í', 'ó', 'ú', 'ü', 'ñ', '¡', '¿'
+            ],
+            'upper': [
+                'Á', 'É', 'Í', 'Ó', 'Ú', 'Ü', 'Ñ',  '!', '?'
+            ]
+        },
+        'it': {
+            'lower': [
+                'à', 'é', 'è', 'ì', 'ò', 'ù'
+            ],
+            'upper': [
+                'À', 'É', 'È', 'Ì', 'Ò', 'Ù'
+            ]
+        },
+    },
+    lang: 'fr', //default language
+    toggled: false, //keyboard not toggled by default
+    toggle_persistent: false, // if this is set to true, set a cookie
+                             // with the toggled value
+    keyboard_case: 'lower', //lower case by default
+    templates: { //template for the toggler and the keyboard. Don't change the classes.
+        toggler: '<div class="specialinput-toggler"><span class="specialinput-toggler-icon specialinput-toggler-show"></span><span>{{chars}}</span></div>',
+        keyboard: '<div class="specialinput-keyboard"><div class="specialinput-row"><div class="specialinput-shift specialinput-button">Shift</div> <div class="specialinput-button"></div>'
+    },
+    global_toggler: '', //Selector for the container of the global toggler. If this is not
+                        //set it will display an toggler next to each input.
+    keyboard_fix_position: false // If not in a position: relative element, set this to true.
+};
+
+
 //Special input jquery plugin. Decorate an input type=text with a keyboard for
 //special chars
 (function($) {
     'use strict';
     $.fn.specialinput = function(options) {
         //setting up default values.
-        $.fn.specialinput.defaults = {
-            language_chars: {
-                'fr': {
-                    'lower': [
-                        'à', 'â', 'ç', 'è', 'é', 'ê', 'ë', 'î',
-                        'ï', 'ô', 'ù', 'û', 'ü', 'æ', 'œ'
-                    ],
-                    'upper': [
-                        'À', 'Â', 'Ç', 'È', 'É', 'Ê', 'Ë', 'Î',
-                        'Ï', 'Ô', 'Ù', 'Û', 'Ü', 'Æ', 'Œ'
-                    ]
-                },
-                'de': {
-                    'lower': [
-                        'ä', 'ö', 'ü', 'ß'
-                    ],
-                    'upper': [
-                        'Ä', 'Ö', 'Ü', 'ß',
-                    ]
-                },
-                'es': {
-                    'lower': [
-                        'á', 'é', 'í', 'ó', 'ú', 'ü', 'ñ', '¡', '¿'
-                    ],
-                    'upper': [
-                        'Á', 'É', 'Í', 'Ó', 'Ú', 'Ü', 'Ñ',  '!', '?'
-                    ]
-                },
-                'it': {
-                    'lower': [
-                        'à', 'é', 'è', 'ì', 'ò', 'ù'
-                    ],
-                    'upper': [
-                        'À', 'É', 'È', 'Ì', 'Ò', 'Ù'
-                    ]
-                },
-            },
-            lang: 'fr', //default language
-            toggled: false, //keyboard not toggled by default
-            toggle_persistent: false, // if this is set to true, set a cookie
-                                     // with the toggled value
-            keyboard_case: 'lower', //lower case by default
-            templates: { //template for the toggler and the keyboard. Don't change the classes.
-                toggler: '<div class="specialinput-toggler"><span class="specialinput-toggler-icon specialinput-toggler-show"></span><span>{{chars}}</span></div>',
-                keyboard: '<div class="specialinput-keyboard"><div class="specialinput-row"><div class="specialinput-shift specialinput-button">Shift</div> <div class="specialinput-button"></div>'
-            },
-            global_toggler: '', //Selector for the container of the global toggler. If this is not
-                                //set it will display an toggler next to each input.
-            keyboard_fix_position: false // If not in a position: relative element, set this to true.
-        };
+        $.fn.specialinput.defaults = DEFAULTS;
+
         var opts = $.extend({}, $.fn.specialinput.defaults, options),
             keyboard_clicked = false;
 
